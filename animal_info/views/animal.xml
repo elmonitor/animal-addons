@@ -2,8 +2,8 @@
 
 
     <!-- Animal Form View -->
-    <record id="view_animal_owner_form" model="ir.ui.view">
-        <field name="name">view.animal.owner.form</field>
+    <record id="view_animal_info_form" model="ir.ui.view">
+        <field name="name">view.animal.info.form</field>
         <field name="model">animal</field>
         <field name="inherit_id" ref="animal.view_animal_form"/>
         <field name="arch" type="xml">
