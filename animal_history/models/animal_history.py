@@ -8,7 +8,7 @@ class AnimalHistory(models.Model):
     _order = "date"
     animal_id = fields.Many2one("animal", string="Mascota", required = True)
     anamnesis = fields.Text(string="Anamnesis", required=True)
-    partner_id = fields.Many2one("res.partner", string="Veterinario", required=True)
+    vet_id = fields.Many2one("res.users", string="Veterinario", required=True)
     temperature = fields.Float(string="Temperatura")
     heart_frec = fields.Integer(string="Frecuencia Cardiaca")
     breath_frec = fields.Integer(string="Frecuencia Respiratoria")
