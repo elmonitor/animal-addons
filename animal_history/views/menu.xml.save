@@ -1,0 +1,11 @@
+<odoo>
+
+    <!-- Main Menu -->
+    <menuitem id="historia"
+              name="Historia Clinica"
+              action="action_animal_history"
+              sequence="10"
+              parent=""
+              />
+ 
+</odoo>

@@ -1,0 +1,142 @@
+<odoo>
+
+    <!-- Animal History Tree View -->
+    <record id="view_animal_history_tree" model="ir.ui.view">
+        <field name="name">animal_history.tree</field>
+        <field name="model">animal.history</field>
+        <field name="arch" type="xml">
+            <tree string="Historial Clínico">
+                <field name="animal_id"/>
+                <field name="partner_id"/>
+                <field name="date"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Animal History Form View -->
+    <record id="view_animal_history_form" model="ir.ui.view">
+        <field name="name">animal_history.form</field>
+        <field name="model">animal.history</field>
+        <field name="arch" type="xml">
+            <form string="Historia Clínica">
+                <header/>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="animal_id"/>
+                        </h1>
+                        <field name="partner_id"/>
+                    </div>
+                    <group id="main">
+                        <group id="left">
+                            <field name="date"/>
+                            <field name="anamnesis"/>
+                            <field name="temperature"/>
+                            <field name="heart_frec" />
+                            <field name="breath_frec"/>
+                        </group>
+                        <group id="right">
+                            <field name="mucous"/>
+                            <field name="dehydration"/>
+                            <field name="weight"/>
+                            <field name="attitude"/>
+                            <field name="condition"/>
+                            <field name="affected"/>
+                            <field name="tests"/>
+                          <field name="dif_diagnosis"/>
+                          <field name="def_diagnosis"/>
+                          <field name="initial_treatment"/>
+                          <field name="next_date"/>
+                        </group>
+                    </group>
+                    <notebook/>
+                </sheet>
+                <!--div class="oe_chatter">
+                    <field name="message_follower_ids"
+                           widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"
+                           options="{'post_refresh': 'recipients'}"/>
+                </div-->
+            </form>
+        </field>
+    </record>
+
+    <!-- Animal History Kanban View -->
+    <record id="view_animal_history_kanban" model="ir.ui.view">
+        <field name="name">animal_history.kanban</field>
+        <field name="model">animal.history</field>
+        <field name="arch" type="xml">
+            <kanban class="o_res_partner_kanban">
+                    <field name="id"/>
+                    <field name="animal_id"/>
+                    <field name="partner_id"/>
+                    <!--field name="name"/-->
+                    <field name="anamnesis"/>
+                    <field name="attitude"/>
+                    <field name="dif_diagnosis"/>
+              <field name="initial_treatment"/>
+              <field name="date"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title oe_partner_heading"><field name="anamnesis"/></strong>
+                                    <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                    <ul>
+                                        <li t-if="record.attitude.raw_value"><field name="attitude"/></li>
+                                        <li t-if="record.dif_diagnosis.raw_value"><field name="dif_diagnosis"/>, <field name="initial_treatment"/></li>
+                                    </ul>
+                                    <div class="oe_kanban_partner_links"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+        </field>
+    </record>
+
+    <!-- Search for animal -->
+    <!--record id="view_animal_history_search" model="ir.ui.view">
+        <field name="name">animal_history.search</field>
+        <field name="model">animal.history</field>
+        <field name="arch" type="xml">
+            <search string="Animals History">
+                <field name="name"
+                       filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"
+                       string="Name"/>
+                <field name="animal_id"/>
+                <field name="partner_id"/>
+
+                <group expand="0" string="Group By">
+                    <filter name="animal_id" string="Nombre de la mascota" domain=""
+                            context="{'group_by': 'animal_id'}"/>
+                    <filter name="partner_id" string="Veterinario" domain=""
+                            context="{'group_by': 'partner_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record-->
+
+    <record id="action_animal_history" model="ir.actions.act_window">
+        <field name="name">Animals History</field>
+        <field name="res_model">animal.history</field>
+        <field name="view_type">tree</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <!--field name="search_view_id" ref="view_animal_search"/-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea un nuevo registro.
+            </p>
+        </field>
+    </record>
+    
+    <menuitem action="action_animal_history"
+                  id="history_root"
+                  name="Historial"
+                  parent="animal.root"
+                  sequence="0"/>
+    
+</odoo>
