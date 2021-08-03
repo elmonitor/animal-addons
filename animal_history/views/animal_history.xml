@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree string="Historial Clínico">
                 <field name="animal_id"/>
-                <field name="partner_id"/>
+                <field name="vet_id"/>
                 <field name="date"/>
 
             </tree>
@@ -26,7 +26,7 @@
                         <h1>
                             <field name="animal_id"/>
                         </h1>
-                        <field name="partner_id"/>
+                        <field name="vet_id"/>
                     </div>
                     <group id="main">
                         <group id="left">
