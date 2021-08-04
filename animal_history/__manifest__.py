@@ -10,7 +10,7 @@
     "website": "https://www.elmonitor.net",
     "depends": ["animal","animal_owner"],
     "data": [
-        "views/animal_history.xml","views/menu.xml",
+        "views/animal_history.xml","views/menu.xml","views/animal_view.xml",
     ],
     "application": False,
 }
