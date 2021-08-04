@@ -1,0 +1,21 @@
+<odoo>
+
+
+    <!-- Animal Form View -->
+    <record id="view_animal_owner_form" model="ir.ui.view">
+        <field name="name">view.animal.owner.form</field>
+        <field name="model">animal</field>
+        <field name="inherit_id" ref="animal.view_animal_form"/>
+        <field name="arch" type="xml">
+            <field name="esterilized" position="after">
+                <field name="history_ids">
+                    <tree>
+                       <field name = 'date'/>            
+                    </tree>
+                </field>
+
+            </field>
+        </field>
+    </record>
+
+</odoo>
