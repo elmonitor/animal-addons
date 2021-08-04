@@ -24,3 +24,11 @@ class AnimalHistory(models.Model):
     initial_treatment = fields.Text(string="Tratamiento inicial")
     date = fields.Datetime(string="Fecha de consulta", required=True)
     next_date = fields.Datetime(string="Próxima Fecha de consulta")
+
+class Animal(models.Model):
+    _inherit = "animal"
+    history_ids = fields.One2many(
+        comodel_name='animal.history.rel',
+        inverse_name='animal.history',
+        string="Historial",
+    )
