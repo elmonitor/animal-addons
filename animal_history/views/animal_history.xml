@@ -63,62 +63,6 @@
         </field>
     </record>
 
-    <!-- Animal History Kanban View -->
-    <record id="view_animal_history_kanban" model="ir.ui.view">
-        <field name="name">animal_history.kanban</field>
-        <field name="model">animal.history</field>
-        <field name="arch" type="xml">
-            <kanban class="o_res_partner_kanban">
-                    <field name="id"/>
-                    <field name="animal_id"/>
-                    <field name="partner_id"/>
-                    <!--field name="name"/-->
-                    <field name="anamnesis"/>
-                    <field name="attitude"/>
-                    <field name="dif_diagnosis"/>
-              <field name="initial_treatment"/>
-              <field name="date"/>
-                    <templates>
-                        <t t-name="kanban-box">
-                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
-                                
-                                <div class="oe_kanban_details">
-                                    <strong class="o_kanban_record_title oe_partner_heading"><field name="anamnesis"/></strong>
-                                    <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
-                                    <ul>
-                                        <li t-if="record.attitude.raw_value"><field name="attitude"/></li>
-                                        <li t-if="record.dif_diagnosis.raw_value"><field name="dif_diagnosis"/>, <field name="initial_treatment"/></li>
-                                    </ul>
-                                    <div class="oe_kanban_partner_links"/>
-                                </div>
-                            </div>
-                        </t>
-                    </templates>
-                </kanban>
-        </field>
-    </record>
-
-    <!-- Search for animal -->
-    <!--record id="view_animal_history_search" model="ir.ui.view">
-        <field name="name">animal_history.search</field>
-        <field name="model">animal.history</field>
-        <field name="arch" type="xml">
-            <search string="Animals History">
-                <field name="name"
-                       filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"
-                       string="Name"/>
-                <field name="animal_id"/>
-                <field name="partner_id"/>
-
-                <group expand="0" string="Group By">
-                    <filter name="animal_id" string="Nombre de la mascota" domain=""
-                            context="{'group_by': 'animal_id'}"/>
-                    <filter name="partner_id" string="Veterinario" domain=""
-                            context="{'group_by': 'partner_id'}"/>
-                </group>
-            </search>
-        </field>
-    </record-->
 
     <record id="action_animal_history" model="ir.actions.act_window">
         <field name="name">Animals History</field>
@@ -136,7 +80,7 @@
     <menuitem action="action_animal_history"
                   id="history_root"
                   name="Historial"
-                  parent="animal.root"
+                  parent="root"
                   sequence="0"/>
     
 </odoo>
