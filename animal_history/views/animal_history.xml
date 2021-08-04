@@ -80,7 +80,7 @@
     <menuitem action="action_animal_history"
                   id="history_root"
                   name="Historial"
-                  parent="root"
+                  parent="animal"
                   sequence="0"/>
     
 </odoo>
