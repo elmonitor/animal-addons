@@ -2,6 +2,23 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo import fields, models, api
 
+class Animal(models.Model):
+    _inherit = "animal"
+    
+
+    @api.depends("history_ids")
+    def _compute_history_count(self):
+        for rec in self:
+            rec.history_count = len(rec.history_ids)
+
+    history_ids = fields.One2many("animal.history", "animal_id", string="Historial")
+    history_count = fields.Integer(
+        compute=_compute_history_count, string="Citas", store=True
+    )
+
+
+
+
 class AnimalHistory(models.Model):
     _name = "animal.history"
     _description = "Historia Clínica"
@@ -24,11 +41,5 @@ class AnimalHistory(models.Model):
     initial_treatment = fields.Text(string="Tratamiento inicial")
     date = fields.Datetime(string="Fecha de consulta", required=True)
     next_date = fields.Datetime(string="Próxima Fecha de consulta")
+    
 
-class Animal(models.Model):
-    _inherit = "animal"
-    history_ids = fields.One2many(
-        comodel_name='animal.history.rel',
-        inverse_name='animal.history',
-        string="Historial",
-    )
